@@ -1,6 +1,27 @@
 {
   "name": "overlay-image-input",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "owc-dev-server --open",
+    "build": "tsc",
+    "prettier:check": "prettier -l **",
+    "prettier:fix": "prettier --write **",
+    "tslint:check": "tslint -p .",
+    "tslint:fix": "tslint -p . --fix",
+    "tsc:check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "lit-element": "^2.1.0"
+  },
+  "devDependencies": {
+    "owc-dev-server": "^0.2.1",
+    "prettier": "^1.16.4",
+    "tslint": "^5.14.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-immutable": "^5.5.1",
+    "typescript": "^3.3.4000"
+  }
 }
