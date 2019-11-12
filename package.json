@@ -14,7 +14,7 @@
     "tsc:check": "tsc --noEmit"
   },
   "dependencies": {
-    "lit-element": "^2.1.0"
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.7.0",
