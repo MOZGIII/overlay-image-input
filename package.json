@@ -7,6 +7,7 @@
   "scripts": {
     "start:dev:builder": "tsc --watch",
     "start:dev:server": "es-dev-server --node-resolve --watch --open",
+    "start:dev": "concurrently --kill-others 'yarn start:dev:builder' 'yarn start:dev:server'",
     "build": "tsc",
     "prettier:check": "prettier --check '**'",
     "prettier:fix": "prettier --write '**'",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
+    "concurrently": "^5.0.0",
     "es-dev-server": "^1.23.1",
     "eslint": "6.1.0",
     "eslint-config-airbnb-base": "14.0.0",
