@@ -6,7 +6,9 @@ import {
   TemplateResult
 } from "lit-element";
 
-@customElement("overlay-image-input")
+const tag = "overlay-image-input";
+
+@customElement(tag)
 class OverlayImageInput extends LitElement {
   @property()
   name = "world";
@@ -15,6 +17,12 @@ class OverlayImageInput extends LitElement {
     return html`
       <p>hello ${this.name}</p>
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    [tag]: OverlayImageInput;
   }
 }
 
