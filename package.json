@@ -7,8 +7,8 @@
   "scripts": {
     "start": "es-dev-server --node-resolve --watch --open",
     "build": "tsc",
-    "prettier:check": "prettier -l **",
-    "prettier:fix": "prettier --write **",
+    "prettier:check": "prettier --check '**'",
+    "prettier:fix": "prettier --write '**'",
     "eslint:check": "eslint . --ext js,ts",
     "eslint:fix": "yarn eslint:check --fix",
     "tsc:check": "tsc --noEmit"
