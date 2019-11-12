@@ -5,13 +5,20 @@ import {
   property,
   TemplateResult
 } from "lit-element";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 const tag = "overlay-image-input";
 
 @customElement(tag)
 class OverlayImageInput extends LitElement {
+  @property({ type: Number })
+  width: number | null | undefined;
+
+  @property({ type: Number })
+  height: number | null | undefined;
+
   @property({ attribute: false })
-  backgroundImage?: CanvasImageSource = undefined;
+  backgroundImage: CanvasImageSource | undefined;
 
   @property({ type: Number, attribute: "bgx" })
   backgroundX = 0;
@@ -20,17 +27,21 @@ class OverlayImageInput extends LitElement {
   backgroundY = 0;
 
   @property({ attribute: false })
-  image?: CanvasImageSource = undefined;
+  image: CanvasImageSource | undefined;
 
-  @property({ type: Number })
+  @property({ type: Number, reflect: true })
   x = 0;
 
-  @property({ type: Number })
+  @property({ type: Number, reflect: true })
   y = 0;
 
   render(): TemplateResult {
     return html`
-      <canvas id="canvas"></canvas>
+      <canvas
+        id="canvas"
+        width=${ifDefined(nullAsUndefined(this.width))}
+        height=${ifDefined(nullAsUndefined(this.height))}
+      ></canvas>
     `;
   }
 
@@ -65,3 +76,8 @@ declare global {
 }
 
 export default OverlayImageInput;
+
+const nullAsUndefined = (value: any) => {
+  if (value === null) return undefined;
+  return value;
+};
