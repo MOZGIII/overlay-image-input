@@ -2,9 +2,47 @@
 <html>
   <head>
     <script type="module" src="./dist/index.js"></script>
+    <style>
+      .checkers {
+        background-image: linear-gradient(45deg, #808080 25%, transparent 25%),
+          linear-gradient(-45deg, #808080 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #808080 75%),
+          linear-gradient(-45deg, transparent 75%, #808080 75%);
+
+        background-size: 20px 20px;
+        background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
+      }
+    </style>
   </head>
 
   <body>
-    <overlay-image-input />
+    <h1>Simple</h1>
+    <div class="checkers">
+      <overlay-image-input id="input" />
+    </div>
+
+    <h2>Utility stuff</h2>
+    <div>
+      <img src="./examples/image.png" id="util_img" style="display: none;" />
+      <img
+        src="./examples/background.png"
+        id="util_bg"
+        style="display: none;"
+      />
+    </div>
+
+    <script>
+      const input = document.getElementById("input");
+      console.log(input);
+      const img = document.getElementById("util_img");
+      console.log(img);
+      const bg = document.getElementById("util_bg");
+      console.log(bg);
+
+      input.image = img;
+      input.backgroundImage = bg;
+
+      console.log("Init done");
+    </script>
   </body>
 </html>
