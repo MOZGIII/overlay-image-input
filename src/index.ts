@@ -77,7 +77,5 @@ declare global {
 
 export default OverlayImageInput;
 
-const nullAsUndefined = (value: any) => {
-  if (value === null) return undefined;
-  return value;
-};
+const nullAsUndefined = <T>(value: T): T extends null ? undefined : T =>
+  value === null ? undefined : (value as any);
