@@ -1,13 +1,21 @@
-import { LitElement, html, customElement, property } from "lit-element";
+import {
+  LitElement,
+  html,
+  customElement,
+  property,
+  TemplateResult
+} from "lit-element";
 
 @customElement("overlay-image-input")
-export class OverlayImageInput extends LitElement {
+class OverlayImageInput extends LitElement {
   @property()
   name = "world";
 
-  render() {
+  render(): TemplateResult {
     return html`
       <p>hello ${this.name}</p>
     `;
   }
 }
+
+export default OverlayImageInput;
