@@ -5,7 +5,8 @@
   "module": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "es-dev-server --node-resolve --watch --open",
+    "start:dev:builder": "tsc --watch",
+    "start:dev:server": "es-dev-server --node-resolve --watch --open",
     "build": "tsc",
     "prettier:check": "prettier --check '**'",
     "prettier:fix": "prettier --write '**'",
