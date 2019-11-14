@@ -18,7 +18,8 @@
     "prettier:fix": "prettier --write '**'",
     "eslint:check": "eslint . --ext js,ts",
     "eslint:fix": "yarn eslint:check --fix",
-    "tsc:check": "tsc --noEmit"
+    "tsc:check": "tsc --noEmit",
+    "prepare": "yarn cleanbuild"
   },
   "dependencies": {
     "lit-element": "^2.2.1"
