@@ -41,6 +41,7 @@ class OverlayImageInput extends LitElement {
         id="canvas"
         width=${ifDefined(nullAsUndefined(this.width))}
         height=${ifDefined(nullAsUndefined(this.height))}
+        style="touch-action: none;"
       ></canvas>
     `;
   }
