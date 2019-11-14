@@ -43,6 +43,18 @@
       input.image = img;
       input.backgroundImage = bg;
 
+      bg.addEventListener(
+        "load",
+        () => {
+          input.setAttribute("width", bg.width);
+          input.setAttribute("height", bg.height);
+          console.log("Dimensions set");
+        },
+        {
+          once: true
+        }
+      );
+
       console.log("Init done");
     </script>
   </body>
