@@ -6,6 +6,7 @@ import {
   TemplateResult
 } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
+import Engine from "./engine";
 
 const tag = "overlay-image-input";
 
@@ -46,7 +47,7 @@ class OverlayImageInput extends LitElement {
     `;
   }
 
-  firstUpdated() {
+  buildEngine = () => {
     const root = this.shadowRoot;
     if (!root) {
       return;
@@ -56,17 +57,42 @@ class OverlayImageInput extends LitElement {
       return;
     }
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) {
+    if (!this.backgroundImage || !this.image) {
       return;
     }
 
-    if (this.backgroundImage) {
-      ctx.drawImage(this.backgroundImage, this.backgroundX, this.backgroundY);
+    return new Engine(
+      canvas,
+      {
+        image: this.backgroundImage,
+        dx: this.backgroundX,
+        dy: this.backgroundY
+      },
+      {
+        image: this.image,
+        dx: this.x,
+        dy: this.y
+      },
+      { x: 0, y: 0 },
+      ({ x, y }) => {
+        this.x = x;
+        this.y = y;
+      }
+    );
+  };
+
+  engine: Engine | undefined;
+
+  updated() {
+    if (!this.engine) {
+      this.engine = this.buildEngine();
+
+      if (!this.engine) {
+        return;
+      }
     }
-    if (this.image) {
-      ctx.drawImage(this.image, this.x, this.y);
-    }
+
+    this.engine.redraw();
   }
 }
 
