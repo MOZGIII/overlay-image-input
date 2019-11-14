@@ -13,6 +13,7 @@
     "start:dev:server": "es-dev-server --node-resolve --watch --open",
     "start": "concurrently --kill-others \"yarn start:dev:builder\" \"yarn start:dev:server\"",
     "build": "tsc",
+    "cleanbuild": "rimraf dist && yarn build",
     "prettier:check": "prettier --check '**'",
     "prettier:fix": "prettier --write '**'",
     "eslint:check": "eslint . --ext js,ts",
@@ -33,6 +34,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
     "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
     "typescript": "^3.7.2"
   }
 }
